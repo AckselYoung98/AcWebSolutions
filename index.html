@@ -85,13 +85,45 @@
 
 <!-- Portfólio -->
 <section id="portfolio" class="bg-background-light dark:bg-background-dark px-6 py-16">
-  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">Alguns projetos e ideias</h2>
-  <div class="flex overflow-x-auto gap-6 snap-x px-2">
-    <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center" style="background-image:url('https://images.unsplash.com/photo-1612831662375-295c1003d3d2?auto=format&fit=crop&w=800&q=60');"></div>
-    <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2a?auto=format&fit=crop&w=800&q=60');"></div>
-    <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center" style="background-image:url('https://images.unsplash.com/photo-1590608897129-79da98d1596e?auto=format&fit=crop&w=800&q=60');"></div>
+  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">
+    Alguns projetos e ideias
+  </h2>
+
+  <div class="relative overflow-hidden">
+    <!-- Container de rolagem -->
+    <div id="portfolio-scroll" class="flex gap-6 px-2 animate-scroll hover:[animation-play-state:paused]">
+      <!-- Cada imagem -->
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/bitcoin.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/blaze.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/clinica.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/confeitaria.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/digital.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/emagrecimento.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/ferramentas.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/manicure.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/maquiagem.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/ofertas.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/pagina.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/paginas.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/roleta.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/tiktok.jpeg');"></div>
+      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/youtube.jpeg');"></div>
+    </div>
   </div>
 </section>
+
+<!-- Estilo de animação -->
+<style>
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 50s linear infinite;
+}
+</style>
+
 
 <!-- Processo -->
 <section id="processo" class="px-6 py-16 max-w-6xl mx-auto text-center">
