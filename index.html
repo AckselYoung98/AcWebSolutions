@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR" class="dark">
 <head>
   <meta charset="utf-8" />
@@ -10,178 +9,272 @@
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="resources/AC.ico">
-<link rel="shortcut icon" href="resources/AC.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="resources/AC.ico" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
           colors: {
-            primary: "#1173d4",
-            "background-light": "#f6f7f8",
-            "background-dark": "#101922",
+            // Paleta solicitada
+            accent: "#43FFD7",
+            primary: "#2BA8A2",
+            "bg-dark": "#161C18",
+            tan: "#9B8B67",
+            beige: "#CFC5A1",
+            "background-light": "#CFC5A1",
+            "background-dark": "#161C18",
           },
-          fontFamily: { display: ["Manrope"] },
+          fontFamily: { display: ["Manrope", "sans-serif"] },
           borderRadius: { lg: "0.5rem", xl: "0.75rem", full: "9999px" },
         },
       },
     };
   </script>
+
+  <style>
+    @keyframes scrollLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .scrolling-track {
+      animation: scrollLoop 40s linear infinite;
+      animation-play-state: running;
+      will-change: transform;
+    }
+    .scrolling-track:hover {
+      animation-play-state: paused;
+    }
+    .portfolio-card:focus {
+      outline: 3px solid rgba(66, 153, 225, 0.6);
+      outline-offset: 4px;
+    }
+    .portfolio-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .track-inner { display: flex; gap: 1.5rem; align-items: stretch; }
+    .track-wrap { display: flex; width: max-content; }
+    @media (max-width: 640px) {
+      .scrolling-track {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display">
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white">
   <div class="flex flex-col min-h-screen">
 
-```
-<!-- Header -->
-<header class="flex items-center justify-between px-6 lg:px-12 py-4 border-b border-primary/20 dark:border-primary/30">
-  <div class="flex items-center gap-3">
-    <img src="resources/Logo.png" alt="Logo Acksel Web Solutions" class="h-12 w-auto">
-    <h2 class="text-lg font-bold text-gray-900 dark:text-white">Acksel Web Solutions</h2>
-  </div>
-  <nav class="hidden lg:flex items-center gap-8">
-    <a href="#inicio" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Início</a>
-    <a href="#servicos" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Serviços</a>
-    <a href="#portfolio" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Portfólio</a>
-    <a href="#processo" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Como Funciona</a>
-    <a href="#contato" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Contato</a>
-  </nav>
-  <a href="https://wa.me/5534999677769" target="_blank" class="hidden lg:flex items-center justify-center bg-primary text-white px-6 h-10 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
-    Solicitar Orçamento
-  </a>
-</header>
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 lg:px-12 py-4 border-b border-primary/20 dark:border-primary/30">
+      <div class="flex items-center gap-3">
+        <img src="resources/Logo.png" alt="Logo Acksel Web Solutions" class="h-12 w-auto">
+        <h2 class="text-lg font-bold text-gray-900 dark:text-white">Acksel Web Solutions</h2>
+      </div>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#inicio" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Início</a>
+        <a href="#servicos" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Serviços</a>
+        <a href="#portfolio" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Portfólio</a>
+        <a href="#processo" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Como Funciona</a>
+        <a href="#contato" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary">Contato</a>
+      </nav>
+      <a href="https://wa.me/5534999677769" target="_blank" class="hidden lg:flex items-center justify-center bg-primary text-white px-6 h-10 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
+        Solicitar Orçamento
+      </a>
+    </header>
 
-<!-- Hero -->
-<section id="inicio" class="flex flex-col justify-center text-center px-6 py-20 bg-cover bg-center" style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=60');">
-  <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 max-w-3xl mx-auto">Transforme sua ideia em um site que vende todos os dias</h1>
-  <p class="text-white/90 text-lg max-w-2xl mx-auto mb-8">Sites rápidos, bonitos e prontos pra gerar resultados reais, criados sob medida para seu negócio.</p>
-  <div class="flex flex-col sm:flex-row gap-4 justify-center">
-    <a href="#portfolio" class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors">Ver Portfólio</a>
-    <a href="https://wa.me/5534999677769" target="_blank" class="bg-primary text-white font-bold px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors">Falar no WhatsApp</a>
-  </div>
-</section>
+    <!-- Hero -->
+    <section id="inicio" class="flex flex-col justify-center text-center px-6 py-20 bg-cover bg-center" style="background-image:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=60');">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 max-w-3xl mx-auto">Transforme sua ideia em um site que vende todos os dias</h1>
+      <p class="text-white/90 text-lg max-w-2xl mx-auto mb-8">Sites rápidos, bonitos e prontos pra gerar resultados reais, criados sob medida para seu negócio.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#portfolio" class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors">Ver Portfólio</a>
+        <a href="https://wa.me/5534999677769" target="_blank" class="bg-primary text-white font-bold px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors">Falar no WhatsApp</a>
+      </div>
+    </section>
 
-<!-- Serviços -->
-<section id="servicos" class="px-6 py-16 max-w-6xl mx-auto text-center">
-  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Sites que elevam sua marca</h2>
-  <p class="text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">Cada site é pensado para atrair, engajar e converter. Da landing page ao institucional completo, seu negócio ganha presença, confiança e resultado.</p>
+    <!-- Serviços -->
+    <section id="servicos" class="px-6 py-16 max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">Sites que elevam sua marca</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">Cada site é pensado para atrair, engajar e converter. Da landing page ao institucional completo, seu negócio ganha presença, confiança e resultado.</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
-      <h3 class="text-xl font-bold text-primary mb-3">Landing Pages</h3>
-      <p class="text-gray-600 dark:text-gray-300">Páginas otimizadas para conversão. Ideais pra lançamentos, campanhas e captação de leads.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
-      <h3 class="text-xl font-bold text-primary mb-3">Sites Institucionais</h3>
-      <p class="text-gray-600 dark:text-gray-300">Mostre profissionalismo e credibilidade com um site moderno e sob medida pro seu negócio.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
-      <h3 class="text-xl font-bold text-primary mb-3">E-commerce</h3>
-      <p class="text-gray-600 dark:text-gray-300">Monte sua loja virtual completa, fácil de gerenciar e pronta pra vender.</p>
-    </div>
-  </div>
-</section>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-bold text-primary mb-3">Landing Pages</h3>
+          <p class="text-gray-600 dark:text-gray-300">Páginas otimizadas para conversão. Ideais pra lançamentos, campanhas e captação de leads.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-bold text-primary mb-3">Sites Institucionais</h3>
+          <p class="text-gray-600 dark:text-gray-300">Mostre profissionalismo e credibilidade com um site moderno e sob medida pro seu negócio.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-bold text-primary mb-3">E-commerce</h3>
+          <p class="text-gray-600 dark:text-gray-300">Monte sua loja virtual completa, fácil de gerenciar e pronta pra vender.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- Portfólio -->
-<section id="portfolio" class="bg-background-light dark:bg-background-dark px-6 py-16">
-  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">
-    Alguns projetos e ideias
-  </h2>
+    <!-- Portfólio -->
+    <section id="portfolio" class="bg-background-light dark:bg-background-dark px-6 py-16">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">
+        Alguns projetos e ideias
+      </h2>
 
-  <div class="relative overflow-hidden">
-    <!-- Container de rolagem -->
-    <div id="portfolio-scroll" class="flex gap-6 px-2 animate-scroll hover:[animation-play-state:paused]">
-      <!-- Cada imagem -->
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/bitcoin.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/blaze.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/clinica.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/confeitaria.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/digital.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/emagrecimento.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/ferramentas.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/manicure.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/maquiagem.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/ofertas.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/pagina.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/paginas.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/roleta.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/tiktok.jpeg');"></div>
-      <div class="min-w-[300px] flex-shrink-0 bg-cover bg-center rounded-lg aspect-video snap-center shadow-md transition-transform duration-300 hover:scale-105" style="background-image:url('resources/youtube.jpeg');"></div>
-    </div>
-  </div>
-</section>
+      <div class="relative">
+        <div class="overflow-x-auto snap-x px-2 py-2">
+          <div class="scrolling-track track-inner track-wrap will-change-transform">
+            <div class="track-set flex gap-6">
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto bitcoin">
+                <img class="portfolio-img" src="resources/bitcoin.jpg" alt="Print do projeto bitcoin" loading="lazy">
+              </a>
 
-<!-- Estilo de animação -->
-<style>
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto blaze">
+                <img class="portfolio-img" src="resources/blaze.jpg" alt="Print do projeto blaze" loading="lazy">
+              </a>
 
-.animate-scroll {
-  animation: scroll 50s linear infinite;
-}
-</style>
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto clinica">
+                <img class="portfolio-img" src="resources/clinica.jpg" alt="Print do projeto clinica" loading="lazy">
+              </a>
 
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto confeitaria">
+                <img class="portfolio-img" src="resources/confeitaria.jpg" alt="Print do projeto confeitaria" loading="lazy">
+              </a>
 
-<!-- Processo -->
-<section id="processo" class="px-6 py-16 max-w-6xl mx-auto text-center">
-  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Como funciona</h2>
-  <p class="text-gray-600 dark:text-gray-400 mb-12">Um processo simples e transparente pra você saber o que esperar e ver resultado rápido.</p>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <h3 class="text-xl font-bold text-primary mb-2">1. Conversa</h3>
-      <p class="text-gray-600 dark:text-gray-300">A gente entende sua ideia e o que quer atingir com o site.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <h3 class="text-xl font-bold text-primary mb-2">2. Criação</h3>
-      <p class="text-gray-600 dark:text-gray-300">Desenvolvemos um layout moderno e alinhado à sua marca.</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <h3 class="text-xl font-bold text-primary mb-2">3. Publicação</h3>
-      <p class="text-gray-600 dark:text-gray-300">Seu site vai pro ar com tudo configurado e suporte no pós-lançamento.</p>
-    </div>
-  </div>
-</section>
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto digital">
+                <img class="portfolio-img" src="resources/digital.jpg" alt="Print do projeto digital" loading="lazy">
+              </a>
 
-<!-- Depoimentos -->
-<section class="bg-background-light dark:bg-background-dark px-6 py-16">
-  <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">O que dizem os clientes</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <p class="text-gray-700 dark:text-gray-300 mb-4">“Mesmo sendo um projeto modelo, a estrutura ficou profissional demais. Passa confiança e já quero lançar meu site com a AC Web Solutions.”</p>
-      <p class="font-semibold text-primary">Carlos Souza</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <p class="text-gray-700 dark:text-gray-300 mb-4">“Layout limpo, rápido e com foco no que importa: conversão. Ficou melhor que muito site caro por aí.”</p>
-      <p class="font-semibold text-primary">Rafael Soares</p>
-    </div>
-    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-      <p class="text-gray-700 dark:text-gray-300 mb-4">“A atenção aos detalhes e o suporte fizeram toda a diferença. Recomendo de olhos fechados.”</p>
-      <p class="font-semibold text-primary">Gabriel Oliveira</p>
-    </div>
-  </div>
-</section>
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto emagrecimento">
+                <img class="portfolio-img" src="resources/emagrecimento.jpg" alt="Print do projeto emagrecimento" loading="lazy">
+              </a>
 
-<!-- CTA -->
-<section id="contato" class="text-center px-6 py-20 bg-primary text-white">
-  <h2 class="text-4xl font-extrabold mb-4">Pronto pra colocar seu negócio online?</h2>
-  <p class="text-lg mb-8 max-w-2xl mx-auto">Fale comigo agora mesmo e receba um orçamento personalizado. Simples, rápido e sem enrolação.</p>
-  <div class="flex flex-col sm:flex-row justify-center gap-4">
-    <a href="https://wa.me/5534999677769" target="_blank" class="bg-white text-primary font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition">Falar no WhatsApp</a>
-    <a href="https://instagram.com/ackselwebsolutions/" target="_blank" class="border border-white font-bold px-8 py-3 rounded-lg hover:bg-white hover:text-primary transition">Chamar no Direct</a>
-  </div>
-</section>
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto ferramentas">
+                <img class="portfolio-img" src="resources/ferramentas.jpg" alt="Print do projeto ferramentas" loading="lazy">
+              </a>
 
-<!-- Footer -->
-<footer class="bg-background-light dark:bg-background-dark border-t border-primary/20 dark:border-primary/30 py-10">
-  <div class="text-center text-gray-600 dark:text-gray-400">
-    <p>© 2025 Acksel Web Solutions. Todos os direitos reservados.</p>
-  </div>
-</footer>
-```
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto manicure">
+                <img class="portfolio-img" src="resources/manicure.jpg" alt="Print do projeto manicure" loading="lazy">
+              </a>
 
-  </div>
-</body>
-</html>
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto maquiagem">
+                <img class="portfolio-img" src="resources/maquiagem.jpg" alt="Print do projeto maquiagem" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto ofertas">
+                <img class="portfolio-img" src="resources/ofertas.jpg" alt="Print do projeto ofertas" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto pagina">
+                <img class="portfolio-img" src="resources/pagina.jpg" alt="Print do projeto pagina" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto paginas">
+                <img class="portfolio-img" src="resources/paginas.jpg" alt="Print do projeto paginas" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto roleta">
+                <img class="portfolio-img" src="resources/roleta.jpg" alt="Print do projeto roleta" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto tiktok">
+                <img class="portfolio-img" src="resources/tiktok.jpg" alt="Print do projeto tiktok" loading="lazy">
+              </a>
+
+              <a href="#" class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 portfolio-card" tabindex="0" aria-label="Projeto youtube">
+                <img class="portfolio-img" src="resources/youtube.jpg" alt="Print do projeto youtube" loading="lazy">
+              </a>
+            </div>
+
+            <div class="track-set flex gap-6" aria-hidden="true">
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/bitcoin.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/blaze.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/clinica.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/confeitaria.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/digital.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/emagrecimento.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/ferramentas.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/manicure.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/maquiagem.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/ofertas.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/pagina.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/paginas.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/roleta.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/tiktok.jpg" alt="" loading="lazy">
+              </a>
+              <a class="min-w-[300px] flex-shrink-0 rounded-lg aspect-video snap-center shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105" tabindex="-1">
+                <img class="portfolio-img" src="resources/youtube.jpg" alt="" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Processo -->
+    <section id="processo" class="px-6 py-16 max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Como funciona</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-12">Um processo simples e transparente pra você saber o que esperar e ver resultado rápido.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-primary mb-2">1. Conversa</h3>
+          <p class="text-gray-600 dark:text-gray-300">A gente entende sua ideia e o que quer atingir com o site.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-primary mb-2">2. Criação</h3>
+          <p class="text-gray-600 dark:text-gray-300">Desenvolvemos um layout moderno e alinhado à sua marca.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <h3 class="text-xl font-bold text-primary mb-2">3. Publicação</h3>
+          <p class="text-gray-600 dark:text-gray-300">Seu site vai pro ar com tudo configurado e suporte no pós-lançamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="bg-background-light dark:bg-background-dark px-6 py-16">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-10">O que dizem os clientes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">“Mesmo sendo um projeto modelo, a estrutura ficou profissional demais. Passa confiança e já quero lançar meu site com a AC Web Solutions.”</p>
+          <p class="font-semibold text-primary">Carlos Souza</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">“Layout limpo, rápido e com foco no que importa: conversão. Ficou melhor que muito site caro por aí.”</p>
+          <p class="font-semibold text-primary">Rafael Soares</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+          <p class="text-gray-700 dark:text-gray-300 mb-4">“A atenção aos detalhes e o suporte fizeram toda a diferença. Recomendo de olhos fechados.”</p>
+          <p class="font-semibold text-primary">Gabriel Oliveira</p>
+        </
